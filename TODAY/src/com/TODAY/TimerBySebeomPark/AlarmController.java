@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import com.TODAY.Timer.R;
+import com.TODAY.R;
 
 /**
  * Example of scheduling one-shot and repeating alarms.  See
