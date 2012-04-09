@@ -24,6 +24,5 @@ public class OneShotAlarm extends BroadcastReceiver
     {
         Toast.makeText(context, "One shot alarm", Toast.LENGTH_SHORT).show();
         AlarmClock ac = new AlarmClock();
-        ac.
     }
 }
