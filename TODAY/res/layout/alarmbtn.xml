@@ -16,8 +16,7 @@
     <Button android:id="@+id/one_shot"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
         android:text="one_shot">
-        <requestFocus />
-    </Button>
+	</Button>
 
     <Button android:id="@+id/start_repeating"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
@@ -26,5 +25,29 @@
     <Button android:id="@+id/stop_repeating"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
         android:text="stop_repeating_alarm" />
+    
+    <Button android:id="@+id/alarm"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:text="run alarm" />
+    
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <TextView android:id="@+id/insert_time_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Insert the time(In what sec?) : "            />
+        
+        <EditText 
+            android:id="@+id/insert_time_edit"
+            android:layout_toRightOf="@id/insert_time_text"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/insert_time_text"
+            
+		/>
+               
+    </RelativeLayout>
 
 </LinearLayout>
