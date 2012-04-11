@@ -72,12 +72,20 @@ App/Service/Alarm Controller
 
 public class AlarmController extends Activity {
     Toast mToast;
+    
+    AlarmModule am;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i("asdasd", "asdasldjlkjasdh");
+        
+        //make the new AlarmModule
+        
+        am = new AlarmModule();
+        
+        
+        
         
         setContentView(R.layout.alarmbtn);
         // Watch for button clicks.
@@ -110,7 +118,10 @@ public class AlarmController extends Activity {
 
     private OnClickListener mOneShotListener = new OnClickListener() {
         public void onClick(View v) {
-            // When the alarm goes off, we want to broadcast an Intent to our
+        	
+        	am.setTimerWithTask(AlarmController.this, OneShotAlarm.class, 5);
+        	
+/*            // When the alarm goes off, we want to broadcast an Intent to our
             // BroadcastReceiver.  Here we make an Intent with an explicit class
             // name to have our own receiver (which has been published in
             // AndroidManifest.xml) instantiated and called, and then create an
@@ -149,7 +160,7 @@ public class AlarmController extends Activity {
             }
             mToast = Toast.makeText(AlarmController.this, "One shot",
                     Toast.LENGTH_LONG);
-            mToast.show();
+            mToast.show();*/
         }
     };
 
