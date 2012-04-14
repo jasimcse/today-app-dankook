@@ -1,4 +1,6 @@
-package com.JJ.ex120326a;
+package com.TODAY.HtmlParserByJuyoungJin;
+
+//package com.JJ.ex120326a;
 
 public class TimeTable
 {
@@ -7,7 +9,7 @@ public class TimeTable
 	private int tPoint ;
 	private String tProfessor ;
 	private String tTitle ;
-	private String tTime ; // ºÐ¸® ÇÔ¼ö ÇÊ¿ä
+	private String tTime ; // ï¿½Ð¸ï¿½ ï¿½Ô¼ï¿½ ï¿½Ê¿ï¿½
 	
 	public TimeTable()
 	{
