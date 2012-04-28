@@ -1,5 +1,7 @@
 package com.TODAY.TimerBySebeomPark;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.TODAY.R;
+import com.TODAY.HTML2XMLBySebeomPark.*;
 
 public class HelloTimePicker extends Activity{
 
@@ -20,6 +23,8 @@ public class HelloTimePicker extends Activity{
 	private Button mPickTime;
 	private int mHour;
 	private int mMinute;
+	
+	
 	AlarmModule am; 
 	static final int TIME_DIALOG_ID = 0;
 	
@@ -34,7 +39,6 @@ public class HelloTimePicker extends Activity{
 	            updateDisplay();
 	            getDifferTime(mHour,mMinute);
 	            // 이 부분에서 현재시간과의 difference들을 보여주면 될것 같다.
-			
 		}
     };
     
@@ -66,8 +70,13 @@ public class HelloTimePicker extends Activity{
 		tmp.setText("The time differ : " + String.valueOf(differTimeResult));
 		
 		// 그 시간뒤에 출력되게 한다. 3rd parameter must be represented as "SECOND" NOT MIN
-		am.setTimerWithTask(this, OneShotAlarm.class, differTimeResult * 60);
+		setTheAlarm(differTimeResult);
 		return mMinute;
+    }
+    
+    public void setTheAlarm(int timeInMin)
+    {
+    	am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 60);
     }
 
     
@@ -104,6 +113,25 @@ public class HelloTimePicker extends Activity{
         mPickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(TIME_DIALOG_ID);
+                
+                // for testing by Sebeom Park
+                // Call the HTML2XML parser
+                
+                
+                HtmlToXMLModule htx = new HtmlToXMLModule();
+                try {
+					htx.Html2Xml("http://203.237.226.95:8080/mobile/login/login_ok.jsp?userid=32071467&userpw=jj119&returnUrl=../m7/m7_c1.jsp&instanceid=");
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+                
+                // The end of this task.
+                
             }
         });
         

@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 				// 이 부분을 자신의 Activity로 등록하세요. 단 이전에 AndroidManifest File에 반드시 자신의 Activity를 추가하세요
 //				Intent intent = new Intent(getApplicationContext(), AlarmController.class);
 				
-				Intent intent = new Intent(getApplicationContext(),HelloTimePicker.class);
+				Intent intent = new Intent(getApplicationContext(),TestingActivity.class);
 				startActivity(intent);
 			}
 		});

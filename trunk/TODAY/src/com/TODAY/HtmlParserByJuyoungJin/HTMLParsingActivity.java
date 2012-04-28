@@ -172,7 +172,7 @@ public class HTMLParsingActivity extends Activity
 	}
 	public void onCreate(Bundle savedInstanceState)
 	{
-		text = (EditText)findViewById(R.id.mTV) ;
+		//text = (EditText)findViewById(R.id.mTV) ;
 		
 		
 
@@ -183,7 +183,7 @@ public class HTMLParsingActivity extends Activity
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);        
 
-		text = (EditText)findViewById(R.id.mTV) ;
+		//text = (EditText)findViewById(R.id.mTV) ;
 		text.setText(setTodayTT(DownloadHtml())) ;
 	}
 }
