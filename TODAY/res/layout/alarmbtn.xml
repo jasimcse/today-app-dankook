@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="4dip"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:padding="4dip" >
 
     <TextView
-        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="0"
         android:paddingBottom="4dip"
-        android:text="alarm_controller"/>
+        android:text="alarm_controller" />
 
-    <Button android:id="@+id/one_shot"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" 
-        android:text="one_shot">
-	</Button>
+    <Button
+        android:id="@+id/one_shot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="one_shot" >
+    </Button>
 
-    <Button android:id="@+id/start_repeating"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" 
+    <Button
+        android:id="@+id/start_repeating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="start_repeating_alarm" />
 
-    <Button android:id="@+id/stop_repeating"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" 
-        android:text="stop_repeating_alarm" />
-    
-    <Button android:id="@+id/alarm"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" 
-        android:text="run alarm" />
-    
-    <RelativeLayout 
+    <Button
+        android:id="@+id/stop_repeating"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        
-        <TextView android:id="@+id/insert_time_text"
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop_repeating_alarm" />
+
+    <Button
+        android:id="@+id/alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="run alarm" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/insert_time_text"
             android:layout_width="wrap_content"
-            android:text="Insert the time(In what sec?) : "            />
-        
-        <EditText 
+            android:layout_height="wrap_content"
+            android:text="Insert the time(In what sec?) : " />
+
+        <EditText
             android:id="@+id/insert_time_edit"
-            android:layout_toRightOf="@id/insert_time_text"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/insert_time_text"
-            
-		/>
-               
+            android:layout_toRightOf="@id/insert_time_text" />
     </RelativeLayout>
-    
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -60,8 +66,8 @@
             android:id="@+id/timeDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="" />
+            android:text=""
+            android:textSize="30dp" />
     </LinearLayout>
 
     <Button
@@ -70,13 +76,72 @@
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:text="Change the time" />
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/diffTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The time differ = "
-       
-        />
+        android:text="The time differ = " />
+
+    <!-- from here, there are Check Box Menus -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.92"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="4dip" >
+
+        <CheckBox
+            android:id="@+id/MonChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Mon" />
+
+        <CheckBox
+            android:id="@+id/TueChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Tue" />
+
+        <CheckBox
+            android:id="@+id/WedChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Wed" />
+
+        <CheckBox
+            android:id="@+id/ThuChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Thu" />
+
+        <CheckBox
+            android:id="@+id/FriChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Fri" />
+
+        <CheckBox
+            android:id="@+id/SatChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Sat" />
+
+        <CheckBox
+            android:id="@+id/SunChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Sun" />
+    </LinearLayout>
 
 </LinearLayout>
