@@ -29,20 +29,6 @@ public class TestingActivity extends Activity {
 
 		Button btn1 = (Button)findViewById(R.id.parserBtn);
 		Button btn2 = (Button)findViewById(R.id.resultBtn);
-//		
-//		rc_market = new RestClient("http://rss.cbs.co.kr/nocutnews.xml");
-////		
-//		try {
-//			rc_market.Execute(RequestMethod.GET);
-//			Log.i("rc_market.getResponse", rc_market.getResponse());
-//		} catch(Throwable t) {
-//	    	Log.e("parserTest", "market " + t.toString());
-//   		}
-//		
-//		
-    
-//		result = new ArrayList<String>();
-		
 
 
 		btn1.setOnClickListener(new OnClickListener() {

@@ -83,12 +83,14 @@
         android:layout_height="wrap_content"
         android:text="The time differ = " />
 
+    
+    
     <!-- from here, there are Check Box Menus -->
 
-    <LinearLayout
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="2.92"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
@@ -105,6 +107,7 @@
             android:id="@+id/TueChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/MonChk"
             android:layout_weight="0"
             android:text="Tue" />
 
@@ -112,6 +115,7 @@
             android:id="@+id/WedChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/TueChk"
             android:layout_weight="0"
             android:text="Wed" />
 
@@ -119,9 +123,19 @@
             android:id="@+id/ThuChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/WedChk"
             android:layout_weight="0"
             android:text="Thu" />
+        
+    </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="4dip" >
+        
         <CheckBox
             android:id="@+id/FriChk"
             android:layout_width="wrap_content"

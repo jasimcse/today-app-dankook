@@ -68,18 +68,8 @@ public class XmlParser {
                  }
          }
 
-		
-		
-//		
-//		Log.i("hahaha", builder.parse(new URL(url).openStream()).toString());
-//		
-//		xmlDoc = builder.parse(new URL(url).openStream());
-//		
-//		HttpGet request = new HttpGet(url);
-	
-		
 	}
-	
+
 	
 	
 	public ArrayList<String> getListofInfo(String tagName)

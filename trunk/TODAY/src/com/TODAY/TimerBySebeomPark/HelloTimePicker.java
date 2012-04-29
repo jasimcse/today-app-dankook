@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.TODAY.R;
@@ -24,6 +25,9 @@ public class HelloTimePicker extends Activity{
 	private int mHour;
 	private int mMinute;
 	
+	private boolean []dayUpFlags;
+	
+	
 	
 	AlarmModule am; 
 	static final int TIME_DIALOG_ID = 0;
@@ -34,8 +38,8 @@ public class HelloTimePicker extends Activity{
 		public void onTimeSet(android.widget.TimePicker view, int hourOfDay,
 				int minute) {
 			// TODO Auto-generated method stub
-			   mHour = hourOfDay;
-	            mMinute = minute;
+			   mHour = hourOfDay;			// hourOfDay를 구한다.
+	            mMinute = minute;			// minute를 구한다 from Time Picker로 부터
 	            updateDisplay();
 	            getDifferTime(mHour,mMinute);
 	            // 이 부분에서 현재시간과의 difference들을 보여주면 될것 같다.
@@ -50,6 +54,8 @@ public class HelloTimePicker extends Activity{
 		final Calendar c = Calendar.getInstance();
 		int curHour = c.get(Calendar.HOUR_OF_DAY);
 		int curMin = c.get(Calendar.MINUTE);
+		
+		int curDay = c.get(Calendar.DAY_OF_WEEK);
 
 		// converting the Hour, minute system to only minutes system;
 		int curTotalMin = curHour * 60 + curMin;
@@ -59,13 +65,52 @@ public class HelloTimePicker extends Activity{
 		Log.i("AlarmTime", String.valueOf(alarmTotalMin));
 
 		int differTimeResult = 0;
-
+		
+		
+		
+		/********** from here, start to get the cloest day ******************/
+		/********** from here, start to get the cloest day ******************/
+		/********** from here, start to get the cloest day ******************/
+		
+		
+		// get the difference between Current Day and closest repeating day
+		
+		initializeDayBtns();
+		
+		int closestRepeatDay = 0;
+		int length = dayUpFlags.length;
+		boolean foundRepeat = false;
+		for(int i=0;i<length;i++)
+		{
+			if(dayUpFlags[i] == true)
+			{
+				closestRepeatDay = (i+1) - curDay;
+				if(closestRepeatDay < 0)
+					continue;
+				else
+					break;
+			}
+		}
+		if(closestRepeatDay < 0)		// 음수일 경우는, 6일을 더해야 가장 가까운 시ㅏㄱㄴ으 ㄹ구한다.
+			closestRepeatDay += 7;
+		
+		/****************** Alam Module complete!!  *********************/
+		/****************** Alam Module complete!!  *********************/
+		/****************** Alam Module complete!!  *********************/
+		
+		
+		
 		if (alarmTotalMin - curTotalMin < 0) // 만약 현재 시간이 alarmTotalMin보다 작다면
 		{
 			alarmTotalMin += (60 * 24); // add the 24 hours as Min
 		}
-
-		differTimeResult = alarmTotalMin - curTotalMin;
+		
+		
+		// 하루에 대한 시간도 더해준다.
+		
+		differTimeResult = alarmTotalMin - curTotalMin + (closestRepeatDay*24*60);
+		// Get the difference between current time and chosen time that user picked from TimePikcer
+		
 		TextView tmp = (TextView) findViewById(R.id.diffTime);
 		tmp.setText("The time differ : " + String.valueOf(differTimeResult));
 		
@@ -73,6 +118,9 @@ public class HelloTimePicker extends Activity{
 		setTheAlarm(differTimeResult);
 		return mMinute;
     }
+    
+    
+    
     
     public void setTheAlarm(int timeInMin)
     {
@@ -92,6 +140,28 @@ public class HelloTimePicker extends Activity{
     }
     
     
+    public void initializeDayBtns()
+    {
+    	CheckBox[] dayChks = new CheckBox[7];				// total 7 days.
+    	dayChks[0] =  (CheckBox)findViewById(R.id.SunChk);
+    	dayChks[1] =  (CheckBox)findViewById(R.id.MonChk);
+    	dayChks[2] =  (CheckBox)findViewById(R.id.TueChk);
+    	dayChks[3] =  (CheckBox)findViewById(R.id.WedChk);
+    	dayChks[4] =  (CheckBox)findViewById(R.id.TueChk);
+    	dayChks[5] =  (CheckBox)findViewById(R.id.FriChk);
+    	dayChks[6] =  (CheckBox)findViewById(R.id.SatChk);
+    	
+    	
+    	dayUpFlags = new boolean[7];
+    	
+    	for(int i=0;i<7;i++)
+    	{
+    		if(dayChks[i].isChecked())
+    			dayUpFlags[i] = true;
+    		else
+    			dayUpFlags[i] = false;
+    	}
+    }
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +175,7 @@ public class HelloTimePicker extends Activity{
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
         mPickTime = (Button) findViewById(R.id.pickTime);
         
+        // initialize Day Btns
         
         
         // add a click listener to the button
@@ -114,34 +185,25 @@ public class HelloTimePicker extends Activity{
             public void onClick(View v) {
                 showDialog(TIME_DIALOG_ID);
                 
-                // for testing by Sebeom Park
-                // Call the HTML2XML parser
                 
-                
-                HtmlToXMLModule htx = new HtmlToXMLModule();
-                try {
-					htx.Html2Xml("http://203.237.226.95:8080/mobile/login/login_ok.jsp?userid=32071467&userpw=jj119&returnUrl=../m7/m7_c1.jsp&instanceid=");
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-                
-                
-                // The end of this task.
-                
+//                // for testing by Sebeom Park
+//                // Call the HTML2XML parser
+//                
+//                
+//                HtmlToXMLModule htx = new HtmlToXMLModule();
+//                try {
+//					htx.Html2Xml("http://203.237.226.95:8080/mobile/login/login_ok.jsp?userid=32071467&userpw=jj119&returnUrl=../m7/m7_c1.jsp&instanceid=");
+//				} catch (MalformedURLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//                
             }
         });
         
-/*
-        // get the current time
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
-        // display the current date
-        updateDisplay();*/
     }
 	
 	

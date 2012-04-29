@@ -23,6 +23,9 @@ public class OneShotAlarm extends BroadcastReceiver
     public void onReceive(Context context, Intent intent)
     {
         Toast.makeText(context, "One shot alarm", Toast.LENGTH_SHORT).show();
+        
+        
+        // 여기서 View가 한번 보이게 되고, 
 
     }
 }
