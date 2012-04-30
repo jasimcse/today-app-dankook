@@ -32,6 +32,7 @@ public class XmlParser {
 	 private void createDomParser(InputStream inputStream) {
          // Use factory to create a DOM document
          DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+         factory.setCoalescing(true);		// get rid of [!CDATA part
          factory.setIgnoringElementContentWhitespace(true);
          DocumentBuilder builder = null;
          try { // Get a DOM parser from the Factory
@@ -82,7 +83,7 @@ public class XmlParser {
 		{
 			for(int i=0; i < nodes.getLength(); i++)
 			{
-				String strTmp = nodes.item(i).getTextContent();		// get the string tmp
+				String strTmp = nodes.item(i).getTextContent() + "\n";		// get the string tmp
 				tmp.add(strTmp);
 			}
 		}

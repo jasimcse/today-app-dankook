@@ -1,21 +1,22 @@
 package com.TODAY.TimerBySebeomPark;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.TODAY.R;
-import com.TODAY.HTML2XMLBySebeomPark.*;
 
 public class HelloTimePicker extends Activity{
 
@@ -124,7 +125,10 @@ public class HelloTimePicker extends Activity{
     
     public void setTheAlarm(int timeInMin)
     {
-    	am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 60);
+    	//am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 60);
+    	am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 5);
+    	
+    	// 5초 뒤에 실행 당분간은
     }
 
     
@@ -184,25 +188,39 @@ public class HelloTimePicker extends Activity{
         mPickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(TIME_DIALOG_ID);
-                
-                
-//                // for testing by Sebeom Park
-//                // Call the HTML2XML parser
-//                
-//                
-//                HtmlToXMLModule htx = new HtmlToXMLModule();
-//                try {
-//					htx.Html2Xml("http://203.237.226.95:8080/mobile/login/login_ok.jsp?userid=32071467&userpw=jj119&returnUrl=../m7/m7_c1.jsp&instanceid=");
-//				} catch (MalformedURLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//                
             }
         });
+        
+        Button runBtn = (Button)findViewById(R.id.alarm);
+        runBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//setTheAlarm(1);		// for testing
+				
+				am.setTimerWithTask(HelloTimePicker.this, OneShotAlarm.class, 1);
+				
+				
+//		        AlertDialog dialog = new AlertDialog.Builder(HelloTimePicker.this).create();
+//		        dialog.setTitle("hello");
+//		        dialog.setMessage("haha");
+//		        dialog.setButton("ok", new Dialog.OnClickListener() {
+//					
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						// 
+//						Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_LONG).show();
+//						
+//					}
+//				});
+//		        dialog.show();
+				
+				
+				
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
     }
 	

@@ -30,6 +30,11 @@
             android:label="@string/app_name" >
         </activity>
         
+          <activity
+            android:name=".TimerBySebeomPark.OneShotAlarm"
+            android:label="@string/app_name" >
+        </activity>
+        
         
        <activity
             android:name="com.TODAY.TimerBySebeomPark.AlarmController"
@@ -41,7 +46,17 @@
             android:label="@string/app_name" >
         </activity>
         
+       
+         <activity
+            android:name=".TimerBySebeomPark.ShowDialogActivity"
+            android:label="@string/app_name" >
+        </activity>
         
+         
+         <activity
+            android:name="com.TODAY.UIByDaeyoungCho.SampleViewFlipperActivity"
+            android:label="@string/app_name" >
+        </activity>
 
        
      

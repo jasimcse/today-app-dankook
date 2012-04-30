@@ -119,7 +119,7 @@ public class AlarmController extends Activity {
     private OnClickListener mOneShotListener = new OnClickListener() {
         public void onClick(View v) {
         	
-        	am.setTimerWithTask(AlarmController.this, OneShotAlarm.class, 5);
+        	//am.setTimerWithTask(AlarmController.this, OneShotAlarm.class, 5);
         	
 /*            // When the alarm goes off, we want to broadcast an Intent to our
             // BroadcastReceiver.  Here we make an Intent with an explicit class
