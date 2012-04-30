@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import android.provider.AlarmClock;
 
 // Need the following import to get access to the app resources, since this
 // class is in a sub-package.
@@ -23,9 +22,17 @@ public class OneShotAlarm extends BroadcastReceiver
     public void onReceive(Context context, Intent intent)
     {
         Toast.makeText(context, "One shot alarm", Toast.LENGTH_SHORT).show();
+        //Intent intent = new Intent(context,showDialogActivity.class);
+        Intent newIntent = new Intent(context,ShowDialogActivity.class);
+        
+        // here has the flag problem
         
         
-        // 여기서 View가 한번 보이게 되고, 
-
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);			// Activiy NEw Task
+        context.startActivity(newIntent);
+        
+        // Broadcast cannot open the AlertDialog.. why? I don't know
+        
+        
     }
 }

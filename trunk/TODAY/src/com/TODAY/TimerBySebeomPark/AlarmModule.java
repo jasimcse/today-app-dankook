@@ -34,7 +34,6 @@ public class AlarmModule {
 		
 		// AlarmController 쩌ㅃ쩌ㅃ
 		Intent intent = new Intent((Activity)baseClass, execClass);
-		
 		PendingIntent sender = PendingIntent.getBroadcast((Activity)baseClass,0,intent,0);
 		
 		Calendar calendar = Calendar.getInstance();
