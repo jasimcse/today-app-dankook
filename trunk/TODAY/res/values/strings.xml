@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, TODAYActivity!</string>
     <string name="app_name">TODAY</string>
+    <color name="red">#FF0000</color>
 
 </resources>

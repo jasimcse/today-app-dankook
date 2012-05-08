@@ -143,7 +143,7 @@ public class ScreenViewFlipper extends LinearLayout implements OnTouchListener {
 
 		curView = new TextView(context);
 
-		curView.setText("View #" + 3 + "\n" + "학교 공지사항");
+		curView.setText("View #" + 3 + "\n" + "��� 怨듭��ы�");
 
 
 		curView.setTextColor(Color.RED);
@@ -168,7 +168,7 @@ public class ScreenViewFlipper extends LinearLayout implements OnTouchListener {
 			indexButtons[i].setPadding(10, 10, 10, 10);
 			buttonLayout.addView(indexButtons[i], params);
 
-			// 꼭 Textview일 필요는 없다. -> just add the textbox(for just testing)
+			// 瑗�Textview����������. -> just add the textbox(for just testing)
 			// xml parsing
 
 
@@ -179,10 +179,6 @@ public class ScreenViewFlipper extends LinearLayout implements OnTouchListener {
 
 			flipper.addView(views[i]);
 		}
-		
-		
-
-
 	}
 
 
@@ -235,6 +231,8 @@ public class ScreenViewFlipper extends LinearLayout implements OnTouchListener {
 				}
 			} else if (upX > downX){ // in case of left direction
 
+				
+				
 				flipper.setInAnimation(AnimationUtils.loadAnimation(getContext(),
 						R.anim.push_right_in));
 				flipper.setOutAnimation(AnimationUtils.loadAnimation(getContext(),
