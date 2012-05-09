@@ -1,4 +1,4 @@
-package org.androidtown.ui.listview;
+package com.TODAY.Alarm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +49,20 @@ public class IconTextListAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		return position;
 	}
+	
+	
+
+	@Override
+	public int getItemViewType(int position) {
+		// TODO Auto-generated method stub
+		return super.getItemViewType(position);
+	}
+
+	@Override
+	public int getViewTypeCount() {
+		// TODO Auto-generated method stub
+		return super.getViewTypeCount();
+	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		IconTextView itemView;
@@ -60,7 +74,6 @@ public class IconTextListAdapter extends BaseAdapter {
 			itemView.setIcon(mItems.get(position).getIcon());
 			itemView.setText(0, mItems.get(position).getData(0));
 			itemView.setText(1, mItems.get(position).getData(1));
-			itemView.setText(2, mItems.get(position).getData(2));
 		}
 		return itemView;
 	}

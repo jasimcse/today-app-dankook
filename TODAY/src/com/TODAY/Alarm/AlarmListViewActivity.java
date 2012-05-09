@@ -1,4 +1,6 @@
-package org.androidtown.ui.listview;
+package com.TODAY.Alarm;
+
+import com.TODAY.R;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -14,7 +16,7 @@ import android.widget.Toast;
  *
  * @author Mike
  */
-public class SampleListViewActivity extends Activity {
+public class AlarmListViewActivity extends Activity {
 
 	DataListView list;
 	IconTextListAdapter adapter;
@@ -36,17 +38,14 @@ public class SampleListViewActivity extends Activity {
 
 		// add items
 		Resources res = getResources();
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "추억의 테트리스", "30,000 다운로드", "900 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon06), "고스톱 - 강호동 버전", "26,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "친구찾기 (Friends Seeker)", "300,000 다운로드", "900 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon06), "강좌 검색", "120,000 다운로드", "900 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "지하철 노선도 - 서울", "4,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon06), "지하철 노선도 - 도쿄", "6,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "지하철 노선도 - LA", "8,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon06), "지하철 노선도 - 워싱턴", "7,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "지하철 노선도 - 파리", "9,000 다운로드", "1500 원"));
-		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon06), "지하철 노선도 - 베를린", "38,000 다운로드", "1500 원"));
-
+		//adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.icon05), "추억의 테트리스", "30,000 다운로드", "900 원"));
+		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.alarmicon), "8:00pm","mon,tue"));
+		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.alarmicon), "9:00pm","mon,tue"));
+		adapter.addItem(new IconTextItem(res.getDrawable(R.drawable.alarmicon), "10:00pm","mon,tue"));
+		
+		
+		
+		
 		// call setAdapter()
 		list.setAdapter(adapter);
 		
