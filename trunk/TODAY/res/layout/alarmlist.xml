@@ -16,6 +16,33 @@
             android:layout_height="64dp"
             android:background="@drawable/alarmicon" >
         </ImageView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="64dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10px" >
+
+                <TextView
+                    android:id="@+id/timeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8:00PM"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/repeatingDayTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timeTxt"
+                    android:text="Mon, Tues, Wed, Thu, Fri"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

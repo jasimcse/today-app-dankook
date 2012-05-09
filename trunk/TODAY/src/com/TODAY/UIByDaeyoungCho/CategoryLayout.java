@@ -1,6 +1,7 @@
 package com.TODAY.UIByDaeyoungCho;
 
 import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.TODAY.R;
 import com.TODAY.TimerBySebeomPark.HelloTimePicker;
+import com.TODAY.Alarm.AlarmListViewActivity;;
 
 public class CategoryLayout extends Activity{
 
@@ -159,7 +161,7 @@ public class CategoryLayout extends Activity{
 			if(v.getId() == alarmLayout.getId())
 			{
 				Log.i("AlarmLayout,","AlarmLayout");
-				Intent intent = new Intent(getApplicationContext(),HelloTimePicker.class);
+				Intent intent = new Intent(getApplicationContext(),AlarmListViewActivity.class);
 				startActivity(intent);
 			}
 
