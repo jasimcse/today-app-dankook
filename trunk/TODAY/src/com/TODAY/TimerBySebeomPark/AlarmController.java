@@ -40,7 +40,7 @@ import com.TODAY.R;
 
 /**
  * Example of scheduling one-shot and repeating alarms.  See
- * {@link OneShotAlarm} for the code run when the one-shot alarm goes off, and
+ * {@link AlarmTask} for the code run when the one-shot alarm goes off, and
  * {@link RepeatingAlarm} for the code run when the repeating alarm goes off.
  * <h4>Demo</h4>
 App/Service/Alarm Controller
@@ -87,7 +87,7 @@ public class AlarmController extends Activity {
         
         
         
-        setContentView(R.layout.alarmbtn);
+        setContentView(R.layout.add_alarm_layout);
         // Watch for button clicks.
         Button button = (Button)findViewById(R.id.one_shot);
         button.setOnClickListener(mOneShotListener);

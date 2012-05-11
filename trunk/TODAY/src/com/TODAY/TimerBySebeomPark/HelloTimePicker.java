@@ -3,10 +3,9 @@ package com.TODAY.TimerBySebeomPark;
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,18 +13,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.TODAY.R;
 
-public class HelloTimePicker extends Activity{
+public class HelloTimePicker extends Activity {
 
 	
 	private TextView mTimeDisplay;
 	private Button mPickTime;
 	private int mHour;
 	private int mMinute;
-	
+	Context context;
 	private boolean []dayUpFlags;
 	
 	
@@ -33,17 +31,23 @@ public class HelloTimePicker extends Activity{
 	AlarmModule am; 
 	static final int TIME_DIALOG_ID = 0;
 	
+	public HelloTimePicker(Context context)
+	{
+		this.context = context;
+	}
+	
+	
 	private TimePickerDialog.OnTimeSetListener mTimeSetListener = 
 			new TimePickerDialog.OnTimeSetListener() {
 		@Override
 		public void onTimeSet(android.widget.TimePicker view, int hourOfDay,
 				int minute) {
 			// TODO Auto-generated method stub
-			   mHour = hourOfDay;			// hourOfDay를 구한다.
-	            mMinute = minute;			// minute를 구한다 from Time Picker로 부터
+			   mHour = hourOfDay;			// hourOfDay瑜�援ы���
+	            mMinute = minute;			// minute瑜�援ы���from Time Picker濡�遺��
 	            updateDisplay();
 	            getDifferTime(mHour,mMinute);
-	            // 이 부분에서 현재시간과의 difference들을 보여주면 될것 같다.
+	            // ��遺����� ������怨쇱� difference�ㅼ� 蹂댁�二쇰㈃ ��� 媛��.
 		}
     };
     
@@ -51,7 +55,7 @@ public class HelloTimePicker extends Activity{
     // get the time difference between Alarm and current Time
     public int getDifferTime(int mHour,int mMinute)
     {
-		// current 시간을 가져오기 위한 Calendar class
+		// current �����媛���ㅺ린 ��� Calendar class
 		final Calendar c = Calendar.getInstance();
 		int curHour = c.get(Calendar.HOUR_OF_DAY);
 		int curMin = c.get(Calendar.MINUTE);
@@ -92,7 +96,7 @@ public class HelloTimePicker extends Activity{
 					break;
 			}
 		}
-		if(closestRepeatDay < 0)		// 음수일 경우는, 6일을 더해야 가장 가까운 시ㅏㄱㄴ으 ㄹ구한다.
+		if(closestRepeatDay < 0)		// �����寃쎌��� 6�쇱� �����媛�� 媛��������긱����밴뎄���.
 			closestRepeatDay += 7;
 		
 		/****************** Alam Module complete!!  *********************/
@@ -101,13 +105,13 @@ public class HelloTimePicker extends Activity{
 		
 		
 		
-		if (alarmTotalMin - curTotalMin < 0) // 만약 현재 시간이 alarmTotalMin보다 작다면
+		if (alarmTotalMin - curTotalMin < 0) // 留�� ��� �����alarmTotalMin蹂대� ���硫�
 		{
 			alarmTotalMin += (60 * 24); // add the 24 hours as Min
 		}
 		
 		
-		// 하루에 대한 시간도 더해준다.
+		// ��（����� ��������以��.
 		
 		differTimeResult = alarmTotalMin - curTotalMin + (closestRepeatDay*24*60);
 		// Get the difference between current time and chosen time that user picked from TimePikcer
@@ -115,7 +119,7 @@ public class HelloTimePicker extends Activity{
 		TextView tmp = (TextView) findViewById(R.id.diffTime);
 		tmp.setText("The time differ : " + String.valueOf(differTimeResult));
 		
-		// 그 시간뒤에 출력되게 한다. 3rd parameter must be represented as "SECOND" NOT MIN
+		// 洹�����ㅼ� 異����� ���. 3rd parameter must be represented as "SECOND" NOT MIN
 		setTheAlarm(differTimeResult);
 		return mMinute;
     }
@@ -126,13 +130,13 @@ public class HelloTimePicker extends Activity{
     public void setTheAlarm(int timeInMin)
     {
     	//am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 60);
-    	am.setTimerWithTask(this, OneShotAlarm.class, timeInMin * 5);
-    	
-    	// 5초 뒤에 실행 당분간은
+    	am.setTimerWithTask(this, AlarmTask.class, timeInMin * 5);
+
+    	// 5珥��ㅼ� �ㅽ� �밸�媛��
     }
 
     
-    //showDialog(id)가 설정되면 일로 return값이 오나보당
+    //showDialog(id)媛��ㅼ���㈃ �쇰� return媛�� �ㅻ�蹂대�
     
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -170,7 +174,7 @@ public class HelloTimePicker extends Activity{
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alarmbtn);
+        setContentView(R.layout.add_alarm_layout);
 
         // initialization the alarmmodule
         am = new AlarmModule();
@@ -196,9 +200,10 @@ public class HelloTimePicker extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				//setTheAlarm(1);		// for testing
+				setTheAlarm(1);		// for testin
 				
-				am.setTimerWithTask(HelloTimePicker.this, OneShotAlarm.class, 1);
+				//am.setTimerWithTask(HelloTimePicker.this, OneShotAlarm.class, 1);
+				// for testing
 				
 				
 //		        AlertDialog dialog = new AlertDialog.Builder(HelloTimePicker.this).create();
@@ -229,10 +234,8 @@ public class HelloTimePicker extends Activity{
 	{
 		// Show the selected Time
 		mTimeDisplay.setText(new StringBuilder().append(pad(mHour)).append(":").append(pad(mMinute)));
-		
 			
 	}
-	
 	
 	private static String pad(int c) {
 	    if (c >= 10)

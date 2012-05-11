@@ -16,7 +16,7 @@ import android.widget.Toast;
  * <p>
  * When the alarm goes off, we show a <i>Toast</i>, a quick message.
  */
-public class OneShotAlarm extends BroadcastReceiver
+public class AlarmTask extends BroadcastReceiver
 {
     @Override
     public void onReceive(Context context, Intent intent)
