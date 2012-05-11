@@ -37,8 +37,6 @@ public class CategoryLayout extends Activity{
 
 		initChckBtn();
 		setEventListener();
-		
-		
 	}
 	
 	

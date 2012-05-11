@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,6 +21,11 @@ public class IconTextListAdapter extends BaseAdapter {
 
 	public void addItem(IconTextItem it) {
 		mItems.add(it);
+	}
+	
+	public void removeItem(int position)
+	{
+		mItems.remove(position);
 	}
 
 	public void setListItems(List<IconTextItem> lit) {
@@ -55,6 +61,7 @@ public class IconTextListAdapter extends BaseAdapter {
 	@Override
 	public int getItemViewType(int position) {
 		// TODO Auto-generated method stub
+		
 		return super.getItemViewType(position);
 	}
 
@@ -66,6 +73,8 @@ public class IconTextListAdapter extends BaseAdapter {
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		IconTextView itemView;
+		int test = getItemViewType(position);
+		Log.i("getItemViewType",String.valueOf(test));
 		if (convertView == null) {
 			itemView = new IconTextView(mContext, mItems.get(position));
 		} else {
