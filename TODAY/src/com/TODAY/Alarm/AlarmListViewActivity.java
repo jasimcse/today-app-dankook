@@ -87,18 +87,50 @@ public class AlarmListViewActivity extends Activity {
 		// use adapter.notifyDataSetChanged() to apply changes after adding items dynamically
 		// adapter.notifyDataSetChanged();
 
+		
 
-		// set listener
+		// set listener for each list.
 		list.setOnDataSelectionListener(new OnDataSelectionListener() {
 			public void onDataSelected(AdapterView parent, View v, int position, long id) {
 				IconTextItem curItem = (IconTextItem) adapter.getItem(position);
-				adapter.removeItem(position);
-				alarmInfoList.remove(position);
+
 				// update the the screen
 				
+				final int selectedPosition = position;
 				
-				
-		    	
+				AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+				builder.setTitle("Are you sure??");
+				builder.setPositiveButton("Delete", new Dialog.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						alarmInfoList.remove(selectedPosition);
+						adapter.removeItem(selectedPosition);
+						/*******************
+						 * please add the AlarmService cancel handler!
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 * 
+						 */
+						refreshActivity(adapter);		// refresh
+					}
+				});
+		    	builder.setNegativeButton("Cancel", new Dialog.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						Toast.makeText(getApplicationContext(), "Canceled", Toast.LENGTH_SHORT).show();
+						dialog.cancel();
+					}
+				});
 				
 				
 				String[] curData = curItem.getData();
@@ -128,7 +160,6 @@ public class AlarmListViewActivity extends Activity {
 			}
 		});	
     }
-    
     
     
     
