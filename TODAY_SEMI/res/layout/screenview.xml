@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="#FFFF">
+
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </ViewFlipper>
+
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="#FFFF"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/indexBtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/white" />
+
+            <ImageView
+                android:id="@+id/indexBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/indexBtn2"
+                android:saveEnabled="true"
+                android:src="@drawable/white" />
+
+            <ImageView
+                android:id="@+id/indexBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/indexBtn2"
+                android:src="@drawable/white" />
+
+            <ImageView
+                android:id="@+id/left_ImageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="60dp"
+                android:layout_toLeftOf="@+id/indexBtn1"
+                android:src="@drawable/left_btn_image" />
+
+            <ImageView
+                android:id="@+id/right_ImageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="60dp"
+                android:src="@drawable/right_btn_image" />
+        </RelativeLayout>
+
+
+</LinearLayout>

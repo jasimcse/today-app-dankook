@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/mTV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFF"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:shadowColor="#3888"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:textColor="#8333"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mT2"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="236dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/roundcorner_yyy"
+            android:gravity="center_horizontal"
+            android:paddingTop="3dp"
+            android:shadowColor="#553F3F3D"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="시 간 표"
+            android:textColor="#FEE008"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/timetable"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/roundcorner_y"
+            android:cacheColorHint="#0000"
+            android:clickable="true"
+            android:divider="#88E8E8E8"
+            android:dividerHeight="1dp" />
+    </RelativeLayout>
+
+</LinearLayout>

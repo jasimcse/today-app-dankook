@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/dt_back"
+        android:layout_width="48dp"
+        android:layout_height="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/back"
+        android:clickable="true"
+        android:gravity="center|center_vertical"
+        android:onClick="gomain"
+        android:shadowColor="#AAAA"
+        android:shadowDx="0.3"
+        android:shadowDy="0.3"
+        android:shadowRadius="0.5"
+        android:textColor="#666"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/dt_Caption"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/roundcorner_bbb"
+        android:gravity="center_horizontal"
+        android:paddingTop="2dp"
+        android:shadowColor="#AAFDFDFF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:text="123"
+        android:textColor="#0D87FE"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/dt_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="435dp"
+        android:layout_below="@+id/dt_back"
+        android:layout_margin="3dp"
+        android:background="@drawable/roundcorner_b"
+        style="@style/lv_style" />
+    
+        <!-- 
+        android:cacheColorHint="#00000000"
+        android:ems="10"
+        android:lineSpacingExtra="5dp"
+        android:padding="10dp"
+        android:shadowColor="#AAAA"
+        android:shadowDx="0"
+        android:shadowDy="0.5"
+        android:shadowRadius="1"
+        android:textColor="#333"
+        android:textSize="15dp"--> 
+        
+        
+        
+        
+    
+
+
+</RelativeLayout>
