@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.TODAY.R;
 import com.TODAY.ListViewSet.ccAnnouncementItem;
 import com.TODAY.ListViewSet.ccFoodItem;
+import com.TODAY.ListViewSet.ccNoticeItem;
 import com.TODAY.ListViewSet.ccTTItem;
 import com.TODAY.ObjectSerializer.ObjectSerializer;
 import com.TODAY.ViewSet.Detail_DankookAnnouncement;
@@ -42,7 +43,7 @@ public class ViewFlipperActivity extends Activity {
 	ArrayList<ccTTItem> timeTablelist;
 	ArrayList<News_Info> newsList;
 	ArrayList<String> memoList;
-	ArrayList<ccAnnouncementItem> announcementList;
+	ArrayList<ccNoticeItem> announcementList;
 	LayoutInfo layoutInfo;
 	
 //	TreeMap<Integer, Integer> mapping
@@ -82,7 +83,7 @@ public class ViewFlipperActivity extends Activity {
         	timeTablelist = (ArrayList<ccTTItem>) ObjectSerializer.deserialize(intent.getStringExtra("TimeTableArray"));
         	newsList = (ArrayList<News_Info>) ObjectSerializer.deserialize(intent.getStringExtra("NewsArray"));
         	memoList = (ArrayList<String>) ObjectSerializer.deserialize(intent.getStringExtra("MemoArray"));
-        	announcementList = (ArrayList<ccAnnouncementItem>) ObjectSerializer.deserialize(intent.getStringExtra("AnnouncmentArray"));
+        	announcementList = (ArrayList<ccNoticeItem>) ObjectSerializer.deserialize(intent.getStringExtra("AnnouncmentArray"));
         	
         	int curIndex = intent.getIntExtra("CurIndex", 0);
         	Log.i("CurrentIndex", String.valueOf(curIndex));
@@ -120,7 +121,8 @@ public class ViewFlipperActivity extends Activity {
 	    		{
 	    		case 0:		 // 이 부분을 수정한다.
 	    			// List<WeatherSet>.. form.
-	    			flipper.addViews(new Detail_Weather(this,weatherList.get(0).getWeatherForecastConditions(),flipper, layoutInfo,listCounter++));
+	    			Detail_Weather dw = new Detail_Weather(this, weatherList, flipper, layoutInfo, listCounter++);
+	    			flipper.addViews(dw);
 	    			break;
 	    		case 1:
 	    			Detail_Food df = new Detail_Food(this,foodList,flipper, layoutInfo,listCounter++);
@@ -136,10 +138,12 @@ public class ViewFlipperActivity extends Activity {
 	    			flipper.addViews(dn);
 	    			break;
 	    		case 4:
-	    			flipper.addViews(new Detail_Memo(this));
+	    			Detail_Memo memo = new Detail_Memo(this,memoList,flipper,layoutInfo,listCounter++);
+	    			flipper.addViews(memo);
 	    			break;
 	    		case 5:
-	    			flipper.addViews(new Detail_DankookAnnouncement(this,announcementList,flipper,layoutInfo,listCounter++));
+	    			Detail_DankookAnnouncement notice = new Detail_DankookAnnouncement(this, announcementList, flipper, layoutInfo, listCounter++);
+	    			flipper.addViews(notice);
 	    			break;
 	    		}	    		
     		}

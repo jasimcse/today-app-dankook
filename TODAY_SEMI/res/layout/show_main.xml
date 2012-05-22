@@ -5,14 +5,15 @@
     android:layout_height="fill_parent"
     android:background="#FFF"
     android:orientation="vertical" >
-    
-        <Button
+
+    <TextView
         android:id="@+id/setup_Btn"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_gravity="right"
-        android:text="SETUP"
-        android:textSize="5dp" />
+        android:textColor="#FF6633"
+        android:text="Setup"
+        android:textSize="15dp" android:layout_alignParentRight="true"/>
 
     <TextView
         android:id="@+id/mTV"
@@ -66,8 +67,6 @@
         android:clickable="true"
         android:divider="#88E8E8E8"
         android:dividerHeight="1dp" />
-
- 
 
     <TextView
         android:id="@+id/mT2"

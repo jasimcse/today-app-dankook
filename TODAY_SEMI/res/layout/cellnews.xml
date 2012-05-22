@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    >
 
     <TextView
         android:id="@+id/News_Title"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/News_Title"
+        
         android:paddingLeft="10dp"
         android:shadowColor="#AAAA"
         android:shadowDx="0"

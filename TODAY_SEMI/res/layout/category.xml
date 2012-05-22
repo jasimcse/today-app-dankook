@@ -2,115 +2,187 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     android:orientation="vertical" >
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" 
         android:id="@+id/alarmLinear"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/alarm_Setup"
+            android:layout_width="90dp"
+            android:layout_height="27dp"
             android:layout_margin="5dp"
-            android:background="@color/red"
-            android:text="Click this to set-up Alarm"
+            android:background="@drawable/roundcorner_r"
+            android:gravity="center"
+            android:shadowColor="#AAFFFDFD"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="알람 설정"
+            android:textColor="#E85B6D"
             android:textSize="15dp" />
-           <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+
+        <TextView
+            android:id="@+id/memo_Setup"
+            android:layout_width="90dp"
+            android:layout_height="27dp"
             android:layout_margin="5dp"
-            android:background="#AAAAAA"
-            android:text="Click this to set-up Memo"
+            android:background="@drawable/roundcorner_y"
+            android:gravity="center"
+            android:shadowColor="#553F3F3D"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="메모 설정"
+            android:textColor="#FEE008"
             android:textSize="15dp" />
-           <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+
+        <TextView
+            android:id="@+id/Log_in_Setup"
+            android:layout_width="90dp"
+            android:layout_height="27dp"
             android:layout_margin="5dp"
-            android:background="#777777"
-            android:text="Log-in Setup"
+            android:background="@drawable/roundcorner_b"
+            android:gravity="center"
+            android:shadowColor="#AAFDFDFF"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="로그 인"
+            android:textColor="#0D87FE"
             android:textSize="15dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/categoryTitleTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="Category"
-        android:textSize="20dp" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/alarmLinear"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/categorybox"
+        android:orientation="horizontal"
+        android:padding="5dp" >
+
+        <TextView
+            android:id="@+id/categoryTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginLeft="10dp"
+            android:shadowColor="#A888"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="[ Category ]"
+            android:textColor="#222"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="42dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical|right"
+            android:shadowColor="#AEEE"
+            android:shadowDx="0"
+            android:shadowDy="0.5"
+            android:shadowRadius="1"
+            android:text="3가지 선택"
+            android:textColor="#AAA"
+            android:textSize="15dp" />
+    </LinearLayout>
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-        
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+
         <CheckBox
             android:id="@+id/chk1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="날씨" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="날씨"
+            android:textColor="#333" />
 
         <CheckBox
             android:id="@+id/chk2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="식단" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="식단"
+            android:textColor="#333" />
 
         <CheckBox
             android:id="@+id/chk3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="시간표" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="시간표"
+            android:textColor="#333" />
 
         <CheckBox
             android:id="@+id/chk4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="뉴스" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="뉴스"
+            android:textColor="#333" />
 
         <CheckBox
             android:id="@+id/chk5"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="메모" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="메모"
+            android:textColor="#333" />
 
         <CheckBox
             android:id="@+id/chk6"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="단국대 공지사항" />
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="50dp"
+            android:text="단국대 공지사항"
+            android:textColor="#333" />
     </LinearLayout>
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="17dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/categoryConfirmBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Confirm" />
+            android:layout_width="80dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="15dp"
+            android:text="확인"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/categoryCancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/categoryConfirmBtn"
-            android:text="Cancel" />
+            android:text="취소"
+            android:textSize="15dp" />
     </RelativeLayout>
 
 </LinearLayout>

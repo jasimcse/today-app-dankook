@@ -20,11 +20,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.TODAY.R;
+import com.TODAY.HtmlParserByJuyoungJin.ccTimeTable;
 import com.TODAY.ListViewSet.RemoveInterface;
 import com.TODAY.ListViewSet.ccAnnouncementAdapter;
 import com.TODAY.ListViewSet.ccAnnouncementItem;
@@ -32,9 +34,11 @@ import com.TODAY.ListViewSet.ccFoodAdapter;
 import com.TODAY.ListViewSet.ccFoodItem;
 import com.TODAY.ListViewSet.ccMemoAdapter;
 import com.TODAY.ListViewSet.ccNewsAdapter;
+import com.TODAY.ListViewSet.ccNewsSimpleAdapter;
+import com.TODAY.ListViewSet.ccNoticeAdapter;
+import com.TODAY.ListViewSet.ccNoticeItem;
 import com.TODAY.ListViewSet.ccTTAdapter;
 import com.TODAY.ListViewSet.ccTTItem;
-import com.TODAY.ListViewSet.ccTimeTable;
 import com.TODAY.ListViewSet.ccWeatherAdapter;
 import com.TODAY.ObjectSerializer.ObjectSerializer;
 import com.TODAY.ViewSet.Dankook_Announcement;
@@ -58,6 +62,7 @@ public class Main_Activity extends Activity
 	private TextView []caption;
 	private ListView []listView;
 	
+	
 	private String layout_Info = "111000";
 	private OnClickEventClass onclickEventClass;
 	private TreeMap<Integer, String> caption_TreeMap;
@@ -69,6 +74,7 @@ public class Main_Activity extends Activity
 	private int threadIndex = 0;
 	private int curIndexForThread = 0;
 	private BaseAdapter ba = null;
+	private BaseAdapter []baseAdapter = null;
 	private Handler mHandler;
 	private ProgressDialog progressDialog;
 	RelativeLayout mainLayout;
@@ -79,7 +85,7 @@ public class Main_Activity extends Activity
 		Calendar cal= Calendar.getInstance( ) ;
 		String mDay = new String(ccTimeTable.DayInt2String(cal.get(Calendar.DAY_OF_WEEK))) ;
 
-		TimeZone jst = TimeZone.getTimeZone ("JST") ;
+		TimeZone jst = TimeZone.getTimeZone ("Asia/Seoul");
 		Calendar mCal = Calendar.getInstance ( jst ) ;
 		
 		
@@ -101,14 +107,14 @@ public class Main_Activity extends Activity
 		initializeTreeMap(caption_TreeMap);
 		
 		textDate = (TextView)findViewById(R.id.mTV);
+		
 		textDate.setText(mCal.get(Calendar.YEAR) + "년 " + (mCal.get(Calendar.MONTH)+1) + "월 " + mCal.get(Calendar.DATE) + "일 " + mDay + "요일\n");
 		
 		mainLayout = (RelativeLayout) findViewById(R.id.main_Layout);
+		 		
 		
 		
-		
-		
-		Button setupBtn = (Button) findViewById(R.id.setup_Btn);
+		TextView setupBtn = (TextView) findViewById(R.id.setup_Btn);
 		setupBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -118,7 +124,6 @@ public class Main_Activity extends Activity
 				Intent intent = new Intent(getApplicationContext(), CategoryLayout.class);		// start Activity
 				intent.putExtra(CategoryLayout.WHOCALL, CategoryLayout.MainActivity_Request);
 				startActivity(intent);
-				
 				// to Show The List of Category
 			}
 		});
@@ -128,27 +133,44 @@ public class Main_Activity extends Activity
 			int completedTaskNum = 0;
 			@Override
 			public void handleMessage(Message msg) {
+				
 				// TODO Auto-generated method stub
+				
 				Log.i("msg Index", String.valueOf(msg.arg1));
 				caption[msg.arg2].setText(caption_TreeMap.get(msg.arg1));		// set the Caption
-				listView[msg.arg2].setOnItemClickListener(onclickEventClass);		// set the listener
-				listView[msg.arg2].setAdapter(ba);
+				//listView[msg.arg2].setOnItemClickListener(onclickEventClass);		// set the listener
+				//listView[msg.arg2].setAdapter(ba);
+				
 				
 				completedTaskNum++;
-				Log.i("compltedTaskNum",String.valueOf(completedTaskNum));
+				//Log.i("compltedTaskNum",String.valueOf(completedTaskNum));
 				if(completedTaskNum == 3)
 				{
+					for(int i=0;i<3;i++)
+					{
+						listView[i].setAdapter(baseAdapter[i]);
+						listView[i].setOnItemClickListener(onclickEventClass);
+					}
 					Log.i("compltedTaskNum",String.valueOf(completedTaskNum));
 					completedTaskNum = 0;
 
 					mainLayout.setVisibility(View.VISIBLE);
 					
+					for(int i=0;i<3;i++)
+					{
+						
+					}
+					
 					progressDialog.dismiss();
+					
 					
 					
 					//startActivity(intent);
 				}
+				
+				
 			}
+			
 			
 		};
 		
@@ -182,10 +204,12 @@ public class Main_Activity extends Activity
 					int index = curIndexForThread;
 					int numOfThread = threadIndex;
 					@Override
-					public void run() {
+					synchronized public void run() {
 						// TODO Auto-generated method stub
 						try {
 							ba = getListViewAdapter(index);
+							baseAdapter[numOfThread] = ba;
+							
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -194,6 +218,7 @@ public class Main_Activity extends Activity
 						//listView[numOfThread].setOnItemClickListener(onclickEventClass);		// set the listener
 						//listView[numOfThread].setAdapter(ba);
 						//ba.notifyDataSetChanged();
+						Log.d("Here is called", "called");
 						Message msg = Message.obtain();
 						msg.arg1 = index;
 						msg.arg2 = numOfThread;
@@ -263,9 +288,9 @@ public class Main_Activity extends Activity
 			Food food = new Food(this);
 			food.parsingInfo();
 			//ArrayList<ccFoodItem> list = (ArrayList<ccFoodItem>) food.getArrayList();
-			ArrayList<ccFoodItem> list = new ArrayList<ccFoodItem>();
+			ArrayList<ccFoodItem> list = (ArrayList<ccFoodItem>)food.getArrayList();
 			
-			list.add(new ccFoodItem("hello", "hello"));
+			//list.add(new ccFoodItem("hello", "hello"));
 			
 			retAdapter = new ccFoodAdapter(this, R.layout.cellfood,list);
 			intent.putExtra("FoodArray", ObjectSerializer.serialize((ArrayList<ccFoodItem>)food.getArrayList()));
@@ -279,7 +304,7 @@ public class Main_Activity extends Activity
 			
 			timeTable.parsingInfo();
 			//ArrayList<ccTTItem> list = (ArrayList<ccTTItem>)timeTable.getArrayList();
-//			ArrayList<ccTTItem> list = new ArrayList<ccTTItem>();
+			ArrayList<ccTTItem> list = (ArrayList<ccTTItem>)timeTable.getArrayList();
 //			list.add(new ccTTItem("hi","hi","hi"));
 			
 			intent.putExtra("TimeTableArray", ObjectSerializer.serialize((ArrayList<ccTTItem>)timeTable.getArrayList()));
@@ -296,10 +321,11 @@ public class Main_Activity extends Activity
 			ArrayList<News_Info> list = new ArrayList<News_Info>();
 			//list.add(new News_Info("title", "link", "desc"));
 			list = (ArrayList<News_Info>)news.getArrayList();
+			
 			//saveArrayListForIntent((ArrayList<Object>)news.getArrayList());
 			intent.putExtra("NewsArray", ObjectSerializer.serialize((ArrayList<News_Info>)news.getArrayList()));
 			
-			retAdapter = new ccNewsAdapter(this, R.layout.cellnews, list);
+			retAdapter = new ccNewsSimpleAdapter(this, R.layout.cellnews_simple, list);
 			break;
 		}
 		case 4: // 메모
@@ -312,8 +338,9 @@ public class Main_Activity extends Activity
 		case 5:	// 단국대 공지사항
 			Dankook_Announcement announcement = new Dankook_Announcement(this);
 			announcement.parsingInfo();
-			retAdapter = new ccAnnouncementAdapter(this, R.layout.cellannouncement, (ArrayList<ccAnnouncementItem>)announcement.getArrayList());
-			intent.putExtra("AnnouncmentArray", ObjectSerializer.serialize((ArrayList<ccAnnouncementItem>)announcement.getArrayList()));
+			
+			retAdapter = new ccNoticeAdapter(this, R.layout.cellnotice, (ArrayList<ccNoticeItem>)announcement.getArrayList());
+			intent.putExtra("AnnouncmentArray", ObjectSerializer.serialize((ArrayList<ccNoticeItem>)announcement.getArrayList()));
 			//saveArrayListForIntent((ArrayList<Object>)announcement.getArrayList());
 			break;
 		}
@@ -348,20 +375,19 @@ public class Main_Activity extends Activity
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		mainLayout.setVisibility(View.INVISIBLE);
-		progressDialog = ProgressDialog.show(this,"Running Program", "Wait for a while", true);
-		thread = new Thread[3];		// Thread 초기화
-		threadIndex= 0 ;			// Thread index 초기화
-		
-		
 		super.onResume();
-		
+
 		if(isCalledViewflipper == true)
 		{
 			isCalledViewflipper = false;
 			return;
 		}
-			
+		
+		mainLayout.setVisibility(View.INVISIBLE);
+		progressDialog = ProgressDialog.show(this,"Running Program", "Wait for a while", true);
+		thread = new Thread[3];		// Thread 초기화
+		baseAdapter = new BaseAdapter[3];
+		threadIndex= 0 ;			// Thread index 초기화	
 		restoreFormSavedState();
 		try {
 			Log.i("Layout_Info",layout_Info);
@@ -449,10 +475,7 @@ public class Main_Activity extends Activity
 			// TODO Auto-generated method stub
 			// save the information as Preference
 			
-//			SharedPreferences pref = getSharedPreferences("CategoryInfo", Activity.MODE_PRIVATE);
-//			SharedPreferences.Editor prefEditor = pref.edit();
-//			prefEditor.putString("CategoryString", layout_Info);
-//			
+
 			intent.putExtra("CategoryInfo", layout_Info);
 			
 			int curIndex = 0;

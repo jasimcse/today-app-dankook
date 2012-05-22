@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="3dp" >
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,35 +13,40 @@
 
         <ImageView
             android:id="@+id/alamImgView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@color/red"
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:background="#3CCC"
              >
         </ImageView>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="64dp"
+            android:layout_height="57dp"
             android:orientation="vertical" >
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10px" >
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"  >
 
                 <TextView
                     android:id="@+id/timeTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:text="8:00PM"
-                    android:textSize="30dp" />
+                    android:textColor="#333"
+                    android:textSize="27dp" />
 
                 <TextView
                     android:id="@+id/repeatingDayTxt"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="15dp"
                     android:layout_below="@id/timeTxt"
                     android:text="Mon, Tues, Wed, Thu, Fri"
+                    android:paddingTop="2dp"
+                    android:textColor="#888"
                     android:textSize="12dp" />
             </RelativeLayout>
         </LinearLayout>

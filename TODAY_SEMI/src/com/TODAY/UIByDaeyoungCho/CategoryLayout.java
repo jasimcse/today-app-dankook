@@ -1,20 +1,25 @@
 package com.TODAY.UIByDaeyoungCho;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.TODAY.R;
 import com.TODAY.Alarm.AlarmListViewActivity;
-import com.TODAY.MainPackage.MainActivity;
+import com.TODAY.Note.CalendarActivity;
+
 
 public class CategoryLayout extends Activity{
 
@@ -22,6 +27,10 @@ public class CategoryLayout extends Activity{
 	Button confirmBtn;
 	Button cancelBtn;
 	LinearLayout alarmLayout;
+	TextView alarm_Setup;
+	TextView memo_Setup;
+	TextView log_in_Setup;
+	
 	final int MaxNum = 3;
 	int numOfSelectedItem = 0 ;
 	static final String categoryInfo = "categoryPref";
@@ -82,10 +91,7 @@ public class CategoryLayout extends Activity{
 			String itemInfo  = pref.getString(prefKey, "");
 			showSelectedChkboxes(itemInfo);
 		}
-		
 	}
-
-
 
 	public void initChckBtn()
 	{
@@ -104,14 +110,26 @@ public class CategoryLayout extends Activity{
 	{
 		confirmBtn = (Button) findViewById(R.id.categoryConfirmBtn);
 		cancelBtn = (Button) findViewById(R.id.categoryCancelBtn);
-		alarmLayout = (LinearLayout) findViewById(R.id.alarmLinear);
+		///alarmLayout = (LinearLayout) findViewById(R.id.alarmLinear);
+		alarm_Setup = (TextView)findViewById(R.id.alarm_Setup);
+		log_in_Setup = (TextView)findViewById(R.id.Log_in_Setup);
+		memo_Setup = (TextView)findViewById(R.id.memo_Setup);
+
 		
 		
 		
 		BtnEventHandler handler = new BtnEventHandler();
 		confirmBtn.setOnClickListener(handler);			// register the event
-		confirmBtn.setOnClickListener(handler);
-		alarmLayout.setOnClickListener(handler);
+		cancelBtn.setOnClickListener(handler);
+		
+		alarm_Setup.setOnClickListener(handler);
+		log_in_Setup.setOnClickListener(handler);
+		memo_Setup.setOnClickListener(handler);
+		
+		///confirmBtn.setOnClickListener(handler);
+		
+		
+		//alarmLayout.setOnClickListener(handler);
 	}
 	
 	
@@ -153,13 +171,7 @@ public class CategoryLayout extends Activity{
 			// TODO Auto-generated method stub
 			if(v.getId() == confirmBtn.getId())			// Confirm btn event handler
 			{
-				// send a message(intent)
-				// then get-back
-				
-				// remove all child's parent's view
-				
-				
-				
+							
 				numOfSelectedItem = 0;
 				for(int i=0;i<chk.length;i++)
 				{
@@ -188,11 +200,78 @@ public class CategoryLayout extends Activity{
 			}
 			
 
-			if(v.getId() == alarmLayout.getId())
+//			if(v.getId() == alarmLayout.getId())
+//			{
+//				Log.i("AlarmLayout,","AlarmLayout");
+//				Intent intent = new Intent(getApplicationContext(),AlarmListViewActivity.class);
+//				startActivityForResult(intent, Alarm_Request);			
+//			}
+			if(v.getId() == alarm_Setup.getId())
 			{
-				Log.i("AlarmLayout,","AlarmLayout");
 				Intent intent = new Intent(getApplicationContext(),AlarmListViewActivity.class);
-				startActivityForResult(intent, Alarm_Request);			
+				startActivityForResult(intent, Alarm_Request);				
+			}
+			if(v.getId() == log_in_Setup.getId())
+			{
+				
+	                //set up dialog
+	                final Dialog dialog = new Dialog(CategoryLayout.this);
+	                dialog.setContentView(R.layout.custom_dialog);
+	                dialog.setTitle("로그인 정보를 입력하세요");
+	                dialog.setCancelable(true);
+	                
+	                
+	                
+	                //there are a lot of settings, for dialog, check them all out!
+	 
+	                //set up text
+	                
+	 
+	                //set up image view
+	                // Editbox역시 preference에 저장된 내용을 가져온다.
+	                EditText idTxt = (EditText) dialog.findViewById(R.id.id);
+	                EditText pwTxt = (EditText) dialog.findViewById(R.id.pw);
+	                
+	                Button okBtn = (Button) dialog.findViewById(R.id.Login_Ok_btn);
+	                Button cancelBtn = (Button) dialog.findViewById(R.id.Login_Cancel_btn);
+
+	                okBtn.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							Toast.makeText(getApplicationContext(), "Log-in btn clicked", Toast.LENGTH_SHORT).show();
+							
+						}
+					});
+	                cancelBtn.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							dialog.cancel();
+							
+						}
+					});
+	                	
+	                //set up button
+//	                Button button = (Button) dialog.findViewById(R.id.Button01);
+//	                button.setOnClickListener(new OnClickListener() {
+//	                @Override
+//	                    public void onClick(View v) {
+//	                        finish();
+//	                    }
+//	                });
+	                //now that the dialog is set up, it's time to show it
+	                
+	                // ok button을 누르면 preference에 각 내용을 저장한다.
+	                dialog.show();
+				// log-in handler will be added
+			}
+			if(v.getId() == memo_Setup.getId())
+			{
+				Intent intent = new Intent(getApplicationContext(),CalendarActivity.class);
+				startActivity(intent);
 			}
 			
 		}

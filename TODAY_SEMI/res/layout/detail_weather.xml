@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ImageView
+            android:id="@+id/Wicon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="#FFFFFF"
+            android:contentDescription="Image" />
+
+        <TextView
+            android:id="@+id/Wcity"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/Wicon"
+            android:background="#00FFFFFF"
+            android:gravity="bottom|right"
+            android:shadowColor="#A888"
+            android:shadowDx="0"
+            android:shadowDy="0.5"
+            android:shadowRadius="1"
+            android:textColor="#555"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Wweather"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="96dp"
+            android:background="#00FFFFFF"
+            android:gravity="center"
+            android:shadowColor="#AEEE"
+            android:shadowDx="0"
+            android:shadowDy="0.5"
+            android:shadowRadius="1"
+            android:textColor="#333"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Whumi"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/Wcity"
+            android:layout_marginTop="20dp"
+            android:background="#00FFFFFF"
+            android:gravity="center"
+            android:shadowColor="#866A"
+            android:shadowDx="0.5"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:textColor="#338"
+            android:textSize="27dp" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/Wcity"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/Whumi"
+            android:background="#00FFFFFF"
+            android:gravity="center_vertical"
+            android:shadowColor="#AAAA"
+            android:shadowDx="0"
+            android:shadowDy="0.5"
+            android:shadowRadius="1"
+            android:text="/"
+            android:textColor="#CCC"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/Wtemp"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/Wcity"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/Whumi"
+            android:background="#00FFFFFF"
+            android:gravity="center"
+            android:shadowColor="#8A66"
+            android:shadowDx="0.5"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:textColor="#833"
+            android:textSize="27dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="17dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/back"
+            android:clickable="true"
+            android:gravity="center|center_vertical"
+            android:onClick="gomain"
+            android:shadowColor="#AAAA"
+            android:shadowDx="0.3"
+            android:shadowDy="0.3"
+            android:shadowRadius="0.5"
+            android:textColor="#666"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/dtWeather"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/roundcorner_rrr"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:paddingTop="2dp"
+            android:shadowColor="#AAFFFDFD"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:textColor="#E85B6D"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/dtWeather1"
+            android:layout_width="match_parent"
+            android:layout_height="435dp"
+            android:layout_below="@+id/back"
+            android:layout_margin="3dp"
+            android:background="@drawable/roundcorner_r"
+            android:cacheColorHint="#0000"
+            android:clickable="true"
+            android:divider="#AAE8E8E8"
+            android:dividerHeight="1dp" />
+    </RelativeLayout>
+
+</LinearLayout>

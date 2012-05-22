@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+    
+    <ImageView
+        android:id="@+id/dtWicon"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:contentDescription="Image"
+        android:background="#FFFFFF"
+    />
+
+    <TextView
+        android:id="@+id/dtWday"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:gravity="bottom|right"
+        android:shadowColor="#A888"
+        android:shadowDx="0"
+        android:shadowDy="0.5"
+        android:shadowRadius="1"
+        android:textColor="#555"
+        android:textSize="15dp" 
+        android:textStyle="bold"
+        android:background="#00FFFFFF"/>
+
+    <TextView
+        android:id="@+id/dtWdate"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+		android:layout_marginRight="5dp"
+        android:gravity="bottom|right"
+        android:layout_toLeftOf="@+id/dtWday"
+        android:textColor="#777"
+        android:textSize="12dp"
+        android:background="#00FFFFFF"/>
+    
+    <TextView
+        android:id="@+id/dtWweather"
+        android:layout_width="68dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:shadowColor="#AEEE"
+        android:shadowDx="0"
+        android:shadowDy="0.5"
+        android:shadowRadius="1"
+        android:textColor="#666"
+        android:textSize="13dp" 
+        android:background="#00FFFFFF"/>    
+
+    <TextView
+        android:id="@+id/dtWlow"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@+id/dtWday"
+        android:layout_alignParentRight="true"
+        android:shadowColor="#AAAA"
+        android:shadowDx="0.5"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="#333"
+        android:textSize="18dp"
+        android:background="#00FFFFFF"/>
+           
+    <TextView
+        android:id="@+id/dtWhigh"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+		android:gravity="center"
+        android:layout_toLeftOf="@+id/dtWlow"
+        android:layout_below="@+id/dtWday"
+        android:shadowColor="#AAAA"
+        android:shadowDx="0.5"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="#333"
+        android:textSize="18dp"
+        android:background="#00FFFFFF"/>
+    
+</RelativeLayout>

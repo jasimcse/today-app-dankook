@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/News_Title"
+        android:layout_width="fill_parent"
+        android:layout_height="17dp"
+        android:gravity="center_vertical"
+        android:shadowColor="#AAAA"
+        android:shadowDx="0"
+        android:shadowDy="0.5"
+        android:shadowRadius="1"
+        android:textColor="#222"
+        android:textSize="12dp"
+        
+     />
+
+</RelativeLayout>

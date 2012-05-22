@@ -22,9 +22,11 @@
         android:shadowRadius="0.5"
         android:textColor="#666"
         android:textSize="12dp" />
+    
+    
 
     <TextView
-        android:id="@+id/dtFood"
+        android:id="@+id/dtWeather"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_alignParentRight="true"
@@ -45,7 +47,7 @@
         android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/dtFood1"
+        android:id="@+id/dtWeatherListView"
         android:layout_width="match_parent"
         android:layout_height="435dp"
         android:layout_below="@+id/back"
